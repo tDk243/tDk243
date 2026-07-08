@@ -1,5 +1,5 @@
 /* ==========================================
-   STYLE GÉNÉRAL & ZONE LIQUID GLASS
+   STYLE GÉNÉRAL & FOND DÉGRADÉ ORANGE/NOIR
    ========================================== */
 * {
   margin: 0;
@@ -9,7 +9,8 @@
 }
 
 body {
-  background: #0d0d11;
+  /* Magnifique dégradé radial : noir au centre, reflets orange très sombres dans les angles */
+  background: radial-gradient(circle at center, #0b0b0f 0%, #120a02 60%, #050301 100%);
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -74,7 +75,7 @@ body {
   padding: 3px;
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 
-    0 0 20px rgba(255, 136, 0, 0.2),
+    0 0 25px rgba(255, 136, 0, 0.35),
     inset 0 0 12px rgba(255, 255, 255, 0.05);
   animation: float 4s ease-in-out infinite;
 }
@@ -85,7 +86,7 @@ body {
   top: 0; left: 0; right: 0; bottom: 0;
   border-radius: 50%;
   padding: 1.5px;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,136,0,0.7), rgba(0,0,0,0.6));
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,136,0,0.8), rgba(0,0,0,0.8));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -156,26 +157,7 @@ body {
 }
 
 /* ==========================================
-   NOUVELLE BANNIÈRE / IMAGE D'ACCUEIL
-   ========================================== */
-.welcome-image-wrapper {
-  width: 100%;
-  margin-bottom: 25px;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.welcome-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-}
-
-/* ==========================================
-   BOUTONS DE LIENS PRINCIPAUX
+   BOUTONS DE LIENS PRINCIPAUX (EFFET VITRE)
    ========================================== */
 .links {
   width: 100%;
@@ -198,7 +180,7 @@ body {
   justify-content: space-between;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .btn-link:active {
