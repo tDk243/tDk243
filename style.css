@@ -7,12 +7,12 @@
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #0b0b0b;
-  /* Fond dégradé sombre premium avec reflets orange aux coins */
+  background-color: #060606;
+  /* Fond dégradé sombre immersif */
   background-image: 
-    radial-gradient(circle at top left, rgba(255, 136, 0, 0.12) 0%, transparent 40%),
-    radial-gradient(circle at bottom right, rgba(255, 136, 0, 0.15) 0%, transparent 45%),
-    linear-gradient(135deg, #070707 0%, #121212 100%);
+    radial-gradient(circle at top left, rgba(255, 136, 0, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at bottom right, rgba(255, 136, 0, 0.18) 0%, transparent 50%),
+    linear-gradient(135deg, #040404 0%, #0f0f0f 100%);
   background-attachment: fixed;
   color: #ffffff;
   display: flex;
@@ -35,18 +35,21 @@ body {
   color: #ffffff;
   text-decoration: none;
   font-size: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .btn-contact:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 136, 0, 0.15);
+  border-color: #ff8800;
+  transform: translateY(-1px);
 }
 
 /* Conteneur principal */
@@ -77,7 +80,7 @@ body {
   height: 125px;
   border-radius: 50%;
   border: 2px solid #ff8800;
-  box-shadow: 0 0 25px #ff8800;
+  box-shadow: 0 0 30px #ff8800;
   animation: pulse 3s infinite alternate;
 }
 
@@ -89,18 +92,19 @@ body {
   z-index: 2;
 }
 
-/* Style du titre principal tDk */
+/* Style du titre tDk */
 .brand-title {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: bold;
   letter-spacing: 2px;
   margin-bottom: 5px;
-  color: #ffffff; /* Le 't' et le 'k' seront blancs */
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
-/* Couleur orange pour la lettre D */
 .orange-letter {
   color: #ff8800;
+  text-shadow: 0 0 15px rgba(255, 136, 0, 0.6);
 }
 
 /* Slogan & Description */
@@ -122,28 +126,66 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
   margin-bottom: 35px;
 }
 
-/* Boutons au style de la maquette (Fond noir mat, bordures fines, flèche à droite) */
+/* --- EFFET LIQUID GLASS STYLE iOS 26 --- */
 .btn-link {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #141414;
+  
+  /* Fond Verre Sombre Semi-transparent */
+  background: linear-gradient(135deg, rgba(25, 25, 25, 0.75) 0%, rgba(15, 15, 15, 0.8) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  
+  /* Bordure de réflexion de lumière style verre */
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  padding: 12px 0 12px 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18); /* Plus clair en haut */
+  border-radius: 22px;
+  padding: 12px 0 12px 16px;
   text-decoration: none;
   color: #ffffff;
-  transition: transform 0.2s, border-color 0.2s;
+  
+  /* Ombres pour l'effet de profondeur 3D */
+  box-shadow: 
+    0 4px 30px rgba(0, 0, 0, 0.4), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   overflow: hidden;
 }
 
+/* Reflet de lumière liquide brillant à l'intérieur */
+.btn-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: none;
+}
+
+/* Animation au survol (Effet liquide fluide) */
 .btn-link:hover {
-  transform: translateY(-2px);
-  border-color: #ff8800;
+  transform: scale(1.02) translateY(-3px);
+  border-color: rgba(255, 136, 0, 0.4);
+  border-top-color: rgba(255, 136, 0, 0.6);
+  box-shadow: 
+    0 10px 40px rgba(255, 136, 0, 0.15), 
+    0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Déclenchement du flash de lumière "liquide" */
+.btn-link:hover::after {
+  left: 150%;
+  transition: left 0.8s ease-in-out;
 }
 
 .btn-left {
@@ -153,25 +195,26 @@ body {
   text-align: left;
 }
 
-/* Ronds des icônes à gauche */
+/* Cercles d'icônes avec lueur interne légère */
 .icon-circle {
-  width: 45px;
-  height: 45px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* Couleurs des icônes de la maquette */
+/* Couleurs des ronds d'icônes */
 .whatsapp-bg { background-color: #25D366; }
 .instagram-bg { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 .facebook-bg { background-color: #1877F2; }
 .email-bg { background-color: #ff8800; }
 .location-bg { background-color: #ff8800; }
 
-/* Textes des boutons */
+/* Textes intérieurs */
 .btn-text {
   display: flex;
   flex-direction: column;
@@ -179,43 +222,49 @@ body {
 
 .btn-title {
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .btn-sub {
   font-size: 12px;
-  color: #777777;
+  color: #888888;
   margin-top: 2px;
 }
 
-/* Bloc flèche orange à l'extrême droite */
+/* Flèche orange à droite (Intégrée dans l'effet verre liquide) */
 .btn-arrow {
-  background-color: #ff8800;
+  background: linear-gradient(135deg, #ff9d26 0%, #ff7700 100%);
   width: 50px;
-  height: 75px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   color: #ffffff;
   margin-right: -1px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Zone Réseaux Sociaux inférieurs */
+/* Zone Réseaux Sociaux du bas (Style Glassmorphism aussi) */
 .footer-socials {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
   width: 100%;
   padding: 20px;
   margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
 .socials-title {
   font-size: 11px;
   color: #ff8800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   margin-bottom: 15px;
 }
 
@@ -226,31 +275,30 @@ body {
 }
 
 .social-circle {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 19px;
   text-decoration: none;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 .social-circle:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
   border-color: #ff8800;
+  background: rgba(255, 136, 0, 0.1);
+  box-shadow: 0 0 15px rgba(255, 136, 0, 0.3);
 }
 
-/* Couleurs des petits boutons réseaux du bas */
 .tiktok { background-color: #000000; }
-.youtube { background-color: #FF0000; }
-.twitter { background-color: #000000; }
-.linkedin { background-color: #0077B5; }
 
-/* Pied de page */
+/* Footer */
 .footer-text {
   font-size: 11px;
   color: #555555;
@@ -262,8 +310,8 @@ body {
   font-weight: bold;
 }
 
-/* Animation d'effet de lueur pour le logo */
+/* Animation de lueur */
 @keyframes pulse {
   0% { box-shadow: 0 0 15px rgba(255, 136, 0, 0.3); }
-  100% { box-shadow: 0 0 30px rgba(255, 136, 0, 0.7); }
+  100% { box-shadow: 0 0 35px rgba(255, 136, 0, 0.7); }
 }
